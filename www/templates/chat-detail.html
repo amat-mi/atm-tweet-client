@@ -1,0 +1,55 @@
+<ion-view view-title="{{tt.tipo_evento}}">
+  <ion-content class="padding">
+
+    <div class="item item-divider">Dettagli del Tweet</div>    
+      <div class="list">      
+        <a  class="item">
+          <div class="row">
+            <div class="col col-25 item-text-wrap">Id :
+            </div>
+            <div class="col col-75 item-text-wrap"><strong>{{tt.id}}</strong>
+            </div>
+          </div>
+        </a>
+        <a  class="item">
+          <div class="row">
+            <div class="col col-25 item-text-wrap">Data Tweet :
+            </div>
+            <div class="col col-75 item-text-wrap"><strong>{{tt.stamp | date:'EEE'}} {{tt.stamp| date:'dd'}}</strong> - <strong>{{tt.stamp | date:'HH:mm'}}</strong>
+            </div>
+          </div>
+        </a>
+        <a  class="item">
+          <div class="row">
+            <div class="col col-25 item-text-wrap">Linea : 
+            </div>
+            <div class="col col-75 item-text-wrap"><strong>{{tt.linea}}</strong>
+            </div>
+          </div>
+        </a>        
+        <a  class="item" ng-if="tt.tipo_evento">
+          <div class="row">
+            <div class="col col-25 item-text-wrap">Tipologia Evento : 
+            </div>
+            <div class="col col-75 item-text-wrap"><strong>{{tt.tipo_evento}}</strong>
+            </div>
+          </div>
+        </a>         
+        <a  class="item"  ng-if="tt.stamp_evento">
+          <div class="row">
+            <div class="col col-25 item-text-wrap">Data Evento : 
+            </div>
+            <div class="col col-75 item-text-wrap"><strong>{{tt.stamp_evento}}</strong>
+            </div>
+          </div>
+        </a>        
+        <div class="item item-divider">Testo Tweet:</div>
+        <a  class="item"  ng-if="tt.stamp_evento">
+          <div class="row">
+            <div class="col col-75 item-text-wrap">{{tt.testo}}
+            </div>
+          </div>
+        </a>        
+      </div>
+  </ion-content>
+</ion-view>
