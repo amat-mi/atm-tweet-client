@@ -36,7 +36,7 @@ angular.module('starter.controllers', [])
   };
 
   $scope.updateTweet = function(){
-    console.log('richiesta update');
+//    console.log('richiesta update');
       if(updating){ $scope.$broadcast('scroll.infiniteScrollComplete'); return;}
       if($scope.metadata && $scope.metadata.next){
         $scope.pagina = $scope.pagina + 1;

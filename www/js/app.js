@@ -24,8 +24,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 .config(function($stateProvider, $urlRouterProvider, RestangularProvider) {
 
   // server locale davide -------------------------------
-  //var baseServerUrl = 'http://dati.amat-mi.it/tweet/';
-  var baseServerUrl = 'http://localhost:8000/tweet/';
+  var baseServerUrl = 'http://dati.amat-mi.it/tweet/';
+  //var baseServerUrl = 'http://localhost:8000/tweet/';
   RestangularProvider.setBaseUrl(baseServerUrl);
 
   //Caching should be used, but the cache must be cleared when needed, for example when creating a new item!!!
@@ -103,6 +103,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/tab/chats');
 
 });
