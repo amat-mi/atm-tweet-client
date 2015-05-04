@@ -1,9 +1,11 @@
 <ion-view view-title="Account">
   <ion-content>
     <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Abilita notifiche
+    <ion-toggle ng-model="filters.nonevento" on-change="pippo()">
+        Escludi comunicazioni secondarie
+        
     </ion-toggle>
     </ion-list>
+    {{filters}}
   </ion-content>
 </ion-view>

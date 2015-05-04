@@ -1,7 +1,7 @@
 <ion-view view-title="Eventi ATM">
   <ion-content style="padding:0px;margin:0px;">
     <ion-list style="padding:0px;margin:0px;">
-      <ion-item class="item" ng-repeat="t in tweet" type="item-text-wrap" href="#/tab/chats/{{t.id}}" style="padding:0px;margin:0px;">
+      <ion-item class="item" ng-repeat="t in tweet|filter:filtraTweet()" type="item-text-wrap" href="#/tab/chats/{{t.id}}" style="padding:0px;margin:0px;">
       <div class="row" style="padding:0px;margin:0px;">
         <div class="col col-30">
         <p> {{t.stamp | date:'EEE'}} {{t.stamp | date:'dd'}}</p>    
