@@ -1,5 +1,35 @@
 <ion-view view-title="Status">
   <ion-content>
 
+
+
+    <ion-list style="padding:0px;margin:0px;">
+      <ion-item class="item" ng-repeat="l in linee" type="item-text-wrap" style="padding:0px;margin:0px;">
+        <div class="col col-30">
+              {{l.linea}}
+        </div>
+        <div class="col col-70">
+            <ion-list style="padding:0px;margin:0px;">
+              <ion-item class="item" ng-repeat="t in l.tweets|filter:filtraTweet()" type="item-text-wrap" style="padding:0px;margin:0px;">
+              <div class="row" style="padding:0px;margin:0px;">
+                <div class="col col-30">
+                <p> {{t.stamp | date:'EEE'}} {{t.stamp | date:'dd'}}</p>    
+                <p> {{t.stamp | date:'HH:mm'}}</p>    
+                </div>
+                <div class="col col-75" style="padding:0px;margin:0px;">
+                <p>tipo evento: <strong> {{t.tipo_evento}}</strong></p>
+                </div>
+                <div style="padding:0px;margin:0px;">
+                <i class="icon ion-chevron-right icon-accessory"></i>
+                </div>
+                </div>
+              </ion-item>
+            </ion-list>
+        </div>
+      </ion-item>
+    </ion-list>
+
+
+
   </ion-content>
 </ion-view>

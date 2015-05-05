@@ -1,9 +1,11 @@
 <ion-view view-title="Account">
   <ion-content>
     <ion-list>
-    <ion-toggle ng-model="filters.nonevento" on-change="pippo()">
+    <ion-toggle ng-model="filters.nonevento">
         Escludi comunicazioni secondarie
-        
+    </ion-toggle>
+    <ion-toggle ng-model="filters.eventiOggi">
+        Visualizza esclusivamenti i tweet di oggi
     </ion-toggle>
     </ion-list>
     {{filters}}

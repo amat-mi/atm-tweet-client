@@ -1,5 +1,9 @@
 <ion-view view-title="Eventi ATM">
   <ion-content style="padding:0px;margin:0px;">
+    <ion-refresher
+    pulling-text="Pull to refresh..."
+    on-refresh="updatenewTweet()">
+  </ion-refresher>
     <ion-list style="padding:0px;margin:0px;">
       <ion-item class="item" ng-repeat="t in tweet|filter:filtraTweet()" type="item-text-wrap" href="#/tab/chats/{{t.id}}" style="padding:0px;margin:0px;">
       <div class="row" style="padding:0px;margin:0px;">
@@ -20,7 +24,7 @@
     </ion-list>
       <ion-infinite-scroll
     on-infinite="updateTweet()"
-    distance="2%">
+    distance="1%">
   </ion-infinite-scroll>
   </ion-content>
 </ion-view>
