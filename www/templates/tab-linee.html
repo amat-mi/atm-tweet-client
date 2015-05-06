@@ -4,9 +4,10 @@
 
 
     <ion-list style="padding:0px;margin:0px;">
-      <ion-item class="item" ng-repeat="l in linee" type="item-text-wrap" style="padding:0px;margin:0px;">
+      <ion-item class="item" ng-repeat="l in linee|filter:filtraLineeVuote()" type="item-text-wrap" style="padding:0px;margin:0px;">
         <div class="col col-30">
               {{l.linea}}
+              
         </div>
         <div class="col col-70">
             <ion-list style="padding:0px;margin:0px;">
