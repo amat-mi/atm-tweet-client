@@ -25,9 +25,7 @@ angular.module('starter.controllers', [])
 
   $scope.linee = {};
 
-
-  $scope.filtraTweet = function(){
-    return function(t){
+  var filtro = function(t){
       var ora = new Date();
       var dataevento = new Date(t.stamp);
       var result = true;
@@ -40,8 +38,25 @@ angular.module('starter.controllers', [])
         return false;
       }
       return true;
+  };
+
+  $scope.filtraTweet = function(){
+    return function(t){
+      return filtro(t);
     }
   }
+
+  $scope.filtraLineeVuote = function(){
+    return function(t){
+      if (t.linea== 'null' ){return false;}
+      var risposta = 0;
+      angular.forEach(t.tweets, function(value, key){ 
+        if (filtro(value)){risposta = 1;}
+      });
+      if (risposta == 0) {return false;}
+      return true;
+    }
+  };
 
 
   var newupdateFromServer = function(){
@@ -112,30 +127,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('LineeCtrl', function($scope, $ionicModal, $timeout, $rootScope, Restangular) {
-  $scope.filtraLineeVuote = function(){
-    return function(t){
-      if (t.linea== 'null' ){return false;}
-      var risposta = 0;
-      angular.forEach(t.tweets, function(value, key){ 
-        valore =  function(){
-          var ora = new Date();
-          var dataevento = new Date(value.stamp);
-          if($scope.filters.nonevento && value.tipo==0){
-             return 0;
-          }
-          if($scope.filters.eventiOggi && (ora.getTime()- dataevento.getTime()) > (25*60*60*1000)  
-            )
-          {
-            return 0;
-          }
-          return 1
-        };
-        risposta = risposta + valore();
-      });
-      if (risposta == 0) {return false;}
-      return true;
-    }
-  };
+
 })
 
 
