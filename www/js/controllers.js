@@ -142,18 +142,18 @@ angular.module('starter.controllers', [])
   $scope.linee[_.findKey($scope.linee, linea=l)].stato = false;
  };
 
- $scope.coloreEvento = function(t){
-  console.log(t);
+ $scope.coloreEvento = function(t, tipologia){
+  console.log(t, tipologia);
   if (t.tipo==0){
-      return 'button-stable';
+      return ''+tipologia+'-stable';
     }
   if (t.tipo==1){
-      return 'button-assertive';
+      return ''+tipologia+'-assertive';
     }
   if (t.tipo==2){
-      return 'button-energized';
+      return ''+tipologia+'-energized';
     }    
-    return 'button-balanced';
+    return ''+tipologia+'-balanced';
    };  
  
 //console.log(t);
