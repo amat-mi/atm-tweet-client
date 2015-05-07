@@ -26,8 +26,8 @@
             <ion-list style="padding:0px;margin:0px;">
               <ion-item class="item" ng-repeat="t in l.tweets|filter:filtraTweet()" type="item-text-wrap" style="padding:0px;margin:0px;border:0px;">
               <div class="row" style="padding:0px;margin:0px;">
-                <div class="col col-20 padding  item item-text-wrap" >
-                <span class="text-center padding calm button button-small button-block" ng-class="coloreEvento(t, 'button')" > <strong>{{t.stamp | date:'EEE'}} {{t.stamp | date:'dd'}} {{t.stamp | date:'HH:mm'}}</strong></span>    
+                <div class="col col-20 item item-text-wrap" >
+                <span class="text-center padding calm button button-small button-block" ng-class="coloreEvento(t, 'button')"> <strong>{{t.stamp | date:'EEE'}} {{t.stamp | date:'dd'}} {{t.stamp | date:'HH:mm'}}</strong></span>    
                 </div>
                 <div class="col col-80 item item-text-wrap" style="border:0px;border-left:3px solid rgba(0,0,0,0.2);padding-left:10px;">
                 <strong> {{t.tipo_evento}} : </strong> {{t.testo}}
