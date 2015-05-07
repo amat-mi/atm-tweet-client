@@ -1,27 +1,40 @@
 <ion-view view-title="Status">
   <ion-content>
-
-
-
+    <ion-refresher
+    pulling-text="Pull to refresh..."
+    on-refresh="updatenewTweet()">
+  </ion-refresher>
     <ion-list style="padding:0px;margin:0px;">
       <ion-item class="item" ng-repeat="l in linee|filter:filtraLineeVuote()" type="item-text-wrap" style="padding:0px;margin:0px;">
-        <div class="col col-30">
-              {{l.linea}}
+        <div class="row">
+                    <div class="col">
+          <strong>{{l.linea}}</strong>
+
+
+</div>
+                    <div class="col col-50 item-text-wrap">
               
+              <span ng-hide="l.stato" ng-repeat="t in l.tweets | filter:filtraTweet() | orderBy:-t.stamp"  class="button button-small" ng-class="coloreEvento(t)" style="margin-left:2px;border-radius: 50%;border:0px;font-size:0.7em;">{{t.stamp | date:'HH:mm'}}</span>
+            
+</div>
+          <div class="col" style="padding-left:15%;">
+            <button class="button button-small button-stable"  ng-click="openDettaglioLinea(l)" ng-hide="l.stato" >
+              <i class="icon ion-ios-plus-empty"></i>
+            </button>
+            <button class="button button-small button-stable" ng-click="closeDettaglioLinea(l)" ng-show="l.stato">
+              <i class="icon ion-ios-close-empty"></i>
+            </button>
+          </div>
         </div>
-        <div class="col col-70">
+        <div class="col col-70" ng-show="aperto(l)">
             <ion-list style="padding:0px;margin:0px;">
-              <ion-item class="item" ng-repeat="t in l.tweets|filter:filtraTweet()" type="item-text-wrap" style="padding:0px;margin:0px;">
+              <ion-item class="item" ng-repeat="t in l.tweets|filter:filtraTweet()" type="item-text-wrap" style="padding:0px;margin:0px;border:0px;">
               <div class="row" style="padding:0px;margin:0px;">
-                <div class="col col-30">
-                <p> {{t.stamp | date:'EEE'}} {{t.stamp | date:'dd'}}</p>    
-                <p> {{t.stamp | date:'HH:mm'}}</p>    
+                <div class="col col-20 padding  item item-text-wrap">
+                <p class="text-center"> {{t.stamp | date:'EEE'}} {{t.stamp | date:'dd'}} {{t.stamp | date:'HH:mm'}}</p>    
                 </div>
-                <div class="col col-75" style="padding:0px;margin:0px;">
-                <p>tipo evento: <strong> {{t.tipo_evento}}</strong></p>
-                </div>
-                <div style="padding:0px;margin:0px;">
-                <i class="icon ion-chevron-right icon-accessory"></i>
+                <div class="col col-80 item item-text-wrap" style="border:0px;border-left:3px solid rgba(0,0,0,0.2);padding-left:10px;">
+                <strong> {{t.tipo_evento}} : </strong> {{t.testo}}
                 </div>
                 </div>
               </ion-item>

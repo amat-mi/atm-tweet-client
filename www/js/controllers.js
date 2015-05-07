@@ -98,7 +98,7 @@ angular.module('starter.controllers', [])
           //$rootScope.linee = _.keys(_.groupBy($scope.tweet, 'linea'));
           $scope.linee = _.map(_.groupBy($scope.tweet, 'linea'), 
                function(item, key){
-                return {linea:key, tweets:item};
+                return {linea:key, tweets:item, stato:false};
 
           });
           $scope.updatigTweet = false;          
@@ -121,13 +121,42 @@ angular.module('starter.controllers', [])
 
   // avvia la richiesta della prima pagina al server 
   updateFromServer(1);
-
+  
 
 
 })
 
 .controller('LineeCtrl', function($scope, $ionicModal, $timeout, $rootScope, Restangular) {
 
+ $scope.aperto = function(l){
+  if (l.stato){
+    return true;
+  }
+  return false;
+ };
+
+ $scope.openDettaglioLinea = function(l){
+  $scope.linee[_.findKey($scope.linee, linea=l)].stato = true;
+ };
+  $scope.closeDettaglioLinea = function(l){
+  $scope.linee[_.findKey($scope.linee, linea=l)].stato = false;
+ };
+
+ $scope.coloreEvento = function(t){
+  console.log(t);
+  if (t.tipo==0){
+      return 'button-stable';
+    }
+  if (t.tipo==1){
+      return 'button-assertive';
+    }
+  if (t.tipo==2){
+      return 'button-energized';
+    }    
+    return 'button-balanced';
+   };  
+ 
+//console.log(t);
 })
 
 
@@ -144,11 +173,21 @@ console.log($scope.tweet);
   }); 
 })
 
-.controller('AccountCtrl', function($scope, $timeout, Restangular, $rootScope) {
+.controller('AccountCtrl', function($scope, $ionicModal, $timeout, Restangular, $rootScope) {
   console.log($scope.filters.nonevento);
   console.log($scope.linee);
-  //$scope.pippo 
 
-//  $rootScope.filters.nonevento = $scope.pippo 
+  $ionicModal.fromTemplateUrl('templates/my-modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.modal = modal;
+    });
+    $scope.openModal = function() {
+      $scope.modal.show();
+    };
+    $scope.closeModal = function() {
+      $scope.modal.hide();
+    };
 
 });

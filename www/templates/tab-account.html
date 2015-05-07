@@ -1,13 +1,17 @@
-<ion-view view-title="Account">
+<ion-view view-title="Settings">
   <ion-content>
+
     <ion-list>
     <ion-toggle ng-model="filters.nonevento">
         Escludi comunicazioni secondarie
     </ion-toggle>
     <ion-toggle ng-model="filters.eventiOggi">
-        Visualizza esclusivamenti i tweet di oggi
+        Solo tweet del giorno corrente
     </ion-toggle>
     </ion-list>
-    {{filters}}
+<button class="button button-light padding" ng-click="openModal()" style="margin:30% 50%;">
+  <i class="icon ion-information"></i>
+</button>
+
   </ion-content>
 </ion-view>
