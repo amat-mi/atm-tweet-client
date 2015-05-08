@@ -142,6 +142,19 @@ angular.module('starter.controllers', [])
   $scope.linee[_.findKey($scope.linee, linea=l)].stato = false;
  };
 
+ $scope.now = new Date();
+ 
+ $scope.stileEvento = function(t){
+		var res = {};
+//		res.background-color = t.tipo == 1 ? '#ef473a' : t.tipo == 2 ? 'orange' : t.tipo == 3 ? '#33cd5f' : 'blue';
+//		res.color = 'white';
+	 	
+	 	if(new Date(t.stamp).getDate() != $scope.now.getDate())
+	 		res.opacity = 0.4;
+	 	
+	 	return res;
+	}
+
  $scope.coloreEvento = function(t, tipologia){
   console.log(t, tipologia);
   if (t.tipo==0){

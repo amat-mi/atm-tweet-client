@@ -11,7 +11,9 @@
             <p><strong>{{l.linea}}</strong></p>
           </div>
           <div class="col col-70 item-text-wrap padding">
-              <span ng-hide="l.stato" ng-repeat="t in l.tweets | filter:filtraTweet() | orderBy:-t.stamp"  class="button button-small" ng-class="coloreEvento(t, 'button')" style="margin-left:2px;border-radius: 50%;border:0px;font-size:0.7em;">{{t.stamp | date:'HH:mm'}}</span>
+              <span ng-hide="l.stato" ng-repeat="t in l.tweets | filter:filtraTweet() | orderBy:-t.stamp"  
+              	class="button button-small" style="margin-left:2px;border-radius: 50%;border:0px;font-size:0.7em;"
+              	ng-class="coloreEvento(t, 'button')" ng-style="stileEvento(t)">{{t.stamp | date:'HH:mm'}}</span>
           </div>
           <div class="col col-10" >
             <button class="button button-small button-stable"  ng-click="openDettaglioLinea(l)" ng-hide="l.stato" >
@@ -27,7 +29,10 @@
               <ion-item class="item" ng-repeat="t in l.tweets|filter:filtraTweet()" type="item-text-wrap" style="padding:0px;margin:0px;border:0px;">
               <div class="row" style="padding:0px;margin:0px;">
                 <div class="col col-20 item item-text-wrap" >
-                <span class="text-center padding calm button button-small button-block" ng-class="coloreEvento(t, 'button')"> <strong>{{t.stamp | date:'EEE'}} {{t.stamp | date:'dd'}} {{t.stamp | date:'HH:mm'}}</strong></span>    
+                <span class="text-center padding calm button button-small button-block" 
+                	ng-class="coloreEvento(t, 'button')" ng-style="stileEvento(t)"> 
+                	<strong>{{t.stamp | date:'EEE'}} {{t.stamp | date:'dd'}} {{t.stamp | date:'HH:mm'}}</strong>
+                </span>    
                 </div>
                 <div class="col col-80 item item-text-wrap" style="border:0px;border-left:3px solid rgba(0,0,0,0.2);padding-left:10px;">
                 <strong> {{t.tipo_evento}} : </strong> {{t.testo}}
