@@ -5,6 +5,8 @@ angular.module('starter.controllers', [])
 
   $scope.appUser = null;
 
+  $scope.intervallo_aggiornamento = 300000 ;
+
   //inizializzo il vettore dei tweet
   $scope.tweet = [];
 
@@ -24,6 +26,15 @@ angular.module('starter.controllers', [])
   };
 
   $scope.linee = {};
+
+  var poll = function(){
+    $timeout(function(){
+      $scope.updatenewTweet();
+      poll();
+      }, $scope.intervallo_aggiornamento);
+    }
+
+
 
   var filtro = function(t){
       var ora = new Date();
@@ -60,6 +71,7 @@ angular.module('starter.controllers', [])
 
 
   var newupdateFromServer = function(){
+    console.log('aggiornamento');
     $scope.updatigTweet = true;
     var params = angular.copy($scope.filters);
     params.last_pk = $scope.tweet[0].id;
@@ -71,6 +83,7 @@ angular.module('starter.controllers', [])
                function(item, key){
                 return {linea:key, tweets:item};
           });
+
           $scope.updatigTweet = false;
       });
   }
@@ -121,7 +134,7 @@ angular.module('starter.controllers', [])
 
   // avvia la richiesta della prima pagina al server 
   updateFromServer(1);
-  
+  poll();  
 
 
 })
@@ -154,7 +167,7 @@ angular.module('starter.controllers', [])
 	}
 
  $scope.coloreEvento = function(t, tipologia){
-  console.log(t, tipologia);
+  //console.log(t, tipologia);
   if (t.tipo==0){
       return ''+tipologia+'-stable';
     }
@@ -172,7 +185,7 @@ angular.module('starter.controllers', [])
 
 
 .controller('ChatsCtrl', function($scope, $timeout, $stateParams, Restangular, $rootScope, $filter) {
-console.log($scope.tweet);
+//console.log($scope.tweet);
 })
 
 
@@ -185,8 +198,8 @@ console.log($scope.tweet);
 })
 
 .controller('AccountCtrl', function($scope, $ionicModal, $timeout, Restangular, $rootScope) {
-  console.log($scope.filters.nonevento);
-  console.log($scope.linee);
+  //console.log($scope.filters.nonevento);
+  //console.log($scope.linee);
 
   $ionicModal.fromTemplateUrl('templates/my-modal.html', {
       scope: $scope,
