@@ -24,9 +24,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 .config(function($stateProvider, $urlRouterProvider, RestangularProvider) {
 
   // server locale davide -------------------------------
-  var baseServerUrl = 'https://dati.amat-mi.it/tweet/';
+  //var baseServerUrl = 'https://dati.amat-mi.it/tweet/';
   //var baseServerUrl = 'http://localhost:8000/tweet/';
-  RestangularProvider.setBaseUrl(baseServerUrl);
+  RestangularProvider.setBaseUrl('../');    //this way it works on any server
 
   //Caching should be used, but the cache must be cleared when needed, for example when creating a new item!!!
   //RestangularProvider.setDefaultHttpFields({cache: true});
